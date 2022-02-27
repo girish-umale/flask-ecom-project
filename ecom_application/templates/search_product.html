@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Product</title>
+</head>
+<body>
+<center><h1>Search Product</h1></center>
+  <a href="/">HOME</a>
+  <hr>
+<form action="/product/search" method="post">
+    Enter Product ID : <input type="text" name="prid"><br><br>
+    <input type="submit">
+</form>
+
+    {% if prod %}
+        <table border="1">
+            <thead>
+            <th>Product ID</th>
+            <th>Product name</th>
+            <th>Product Quantity</th>
+            <th>Product Product Vendor</th>
+            <th>Product Price</th>
+            <th>Action</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ prod.productId }}</td>
+                <td>{{ prod.productName }}</td>
+                <td>{{ prod.productQuantity }}</td>
+                <td>{{ prod.productVendor }}</td>
+                <td>{{ prod.productPrice }}</td>
+                <td>
+                    <a href="/product/edit/{{prod.productId}}">EDIT</a>
+                    <a href="/product/delete/{{prod.productId}}">DELETE</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    {% else %}
+        No Product Found with given ID.
+    {% endif %}
+</body>
+</html>
